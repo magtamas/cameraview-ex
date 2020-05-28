@@ -93,7 +93,7 @@ class CameraView @JvmOverloads constructor(
         object : OrientationDetector(context) {
 
             override fun onDisplayOrientationChanged(displayOrientation: Int) {
-                preview.setDisplayOrientation(displayOrientation)
+                preview.setDisplayOrientation(90)
                 camera.deviceRotation = displayOrientation
                 camera.screenRotation = displayOrientation
             }
