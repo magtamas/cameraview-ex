@@ -93,19 +93,19 @@ class CameraView @JvmOverloads constructor(
         object : OrientationDetector(context) {
 
             override fun onDisplayOrientationChanged(displayOrientation: Int) {
-                preview.setDisplayOrientation(90)
+                /*preview.setDisplayOrientation(displayOrientation)
                 camera.deviceRotation = displayOrientation
-                camera.screenRotation = displayOrientation
+                camera.screenRotation = displayOrientation*/
             }
 
             override fun onSensorOrientationChanged(sensorOrientation: Int) {
-                val rotation: Int = when (val orientation: Orientation = Orientation.parse(sensorOrientation)) {
+                /*val rotation: Int = when (val orientation: Orientation = Orientation.parse(sensorOrientation)) {
                     Orientation.Portrait, Orientation.PortraitInverted -> orientation.value
                     Orientation.Landscape -> Orientation.LandscapeInverted.value
                     Orientation.LandscapeInverted -> Orientation.Landscape.value
                     Orientation.Unknown -> return
                 }
-                if (camera.deviceRotation != rotation) camera.deviceRotation = rotation
+                if (camera.deviceRotation != rotation) camera.deviceRotation = rotation*/
             }
         }
     }
@@ -125,7 +125,6 @@ class CameraView @JvmOverloads constructor(
                     Camera2Api23(listenerManager, preview, config, SupervisorJob(parentJob), context)
                 else -> Camera2Api24(listenerManager, preview, config, SupervisorJob(parentJob), context)
             }
-
 
             config.aspectRatio.observe(camera) {
                 camera.setAspectRatio(it)
